@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2024-03-14T07:40:09Z"
+  generation: 1
+  labels:
+    app: appsrv
+  name: appsrv
+  namespace: default
+  resourceVersion: "1917"
+  uid: ca03e404-e26e-4e5f-b2e3-71b994424f64
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: appsrv
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: appsrv
+    spec:
+      containers:
+      - image: ghcr.io/sigfriedschweigl/backend:latest
+        imagePullPolicy: Always
+        name: backend
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2024-03-14T07:41:09Z"
+    lastUpdateTime: "2024-03-14T07:41:09Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2024-03-14T07:40:09Z"
+    lastUpdateTime: "2024-03-14T07:41:09Z"
+    message: ReplicaSet "appsrv-68d74c7496" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

@@ -13,6 +13,6 @@ jobs:
           cache: 'maven'
           cache-dependency-path: 'sub-project/pom.xml' # optional
       - name: Build with Maven
-        run:
+        run: |
           mvn -B package
           ls -lh

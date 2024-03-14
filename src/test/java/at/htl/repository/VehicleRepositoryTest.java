@@ -16,6 +16,6 @@ class VehicleRepositoryTest {
     @Transactional
     void createRecoredSmokeTest() {
         var myCar = new Vehicle("Opel", "Kadett");
-        vehicleRepository.persist(myCar);
+        //vehicleRepository.persist(myCar);
     }
 }

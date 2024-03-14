@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: schweigl
+spec:
+  #  entryPoints:
+  #    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`schweigl.cloud.key.fit`)
+      services:
+        - name: appsrv
+          port: 8080
+#  tls:
+#    secretName: default-ingress-cert

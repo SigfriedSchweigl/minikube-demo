@@ -17,10 +17,10 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: 'maven'
-          cache-dependency-path: 'sub-project/pom.xml' # optional
       - name: Build with Maven
         run: |
           mvn -B package
           ls -lh
           cp src/main/docker/Dockerfile ./target
           docker build --tag ghcr.io/sigfriedschweigl/backend:latest ./target
+          docker push ghcr.io/${{ github.actor }}/backend:latest

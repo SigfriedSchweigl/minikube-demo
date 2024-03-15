@@ -9,12 +9,12 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: appsrv
+      component: appsrv
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: appsrv
+        component: appsrv
     spec:
       initContainers:
         - name: check-db-ready

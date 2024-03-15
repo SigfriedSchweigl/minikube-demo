@@ -10,6 +10,21 @@ spec:
       match: Host(`schweigl.cloud.key.fit`)
       services:
         - name: appsrv
-          port: 8080
+          port: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appsrv
+
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    component: appsrv
+
+
 #  tls:
 #    secretName: default-ingress-cert
